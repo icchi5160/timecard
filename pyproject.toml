@@ -1,0 +1,20 @@
+[project]
+name = "timecard"
+version = "1.0.0"
+description = "Slack attendance management"
+requires-python = ">=3.12"
+dependencies = ["slack-bolt>=1.21,<2", "APScheduler>=3.10,<4", "python-dotenv>=1,<2"]
+[project.scripts]
+timecard = "timecard.cli:main"
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.9"]
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]

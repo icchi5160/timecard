@@ -1,0 +1,19 @@
+[Unit]
+Description=timecard Slack attendance Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/timecard
+EnvironmentFile=%h/timecard/.env
+ExecStart=%h/.local/bin/uv run --frozen --no-sync timecard run
+Restart=on-failure
+RestartSec=10
+RestartPreventExitStatus=2
+TimeoutStopSec=120
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target
